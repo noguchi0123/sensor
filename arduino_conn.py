@@ -10,10 +10,10 @@ port = '/dev/ttyUSB0'
 #ser.write('<RM,>??\r\n') #send command (CR+LF)
 
 arduino = serial.Serial('/dev/ttyACM0', 9600)
-temp=23
-ondo=70
+temp_low=23
+temp_high=70
 
 while True:
-	arduino.write(chr(temp))
-	arduino.write(chr(ondo))
+	arduino.write(chr(temp_low))
+	arduino.write(chr(temp_high))
 	#ser.write('<RM,>??\r\n') #send command (CR+LF)
