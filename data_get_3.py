@@ -1,4 +1,5 @@
-###test/data_get.py
+# -*- coding: utf-8 -*-
+#test/data_get.py
 
 import serial
 import sys
