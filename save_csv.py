@@ -16,25 +16,24 @@ ser = serial.Serial(argvs[2],38400,timeout=5) # 10s-timeout baudrate=38400
 
 #ser.write(b'<RM,>??\r\n') #send command (CR+LF)
 
-now = datetime.datetime.now() # now no setting
 count = 0
 
 
 while True:
-        #ser.write('<RM,>??\r\n') #send command (CR+LF)
-        #line = ser.readline()
-        #split_line = line.split(',') #conma de split
         f = open(argvs[1],"w")
         while True:
                 ser.write(b'<RM,>??\r\n') #send command (CR+LF)
-                line = ser.readline()
+                line=ser.readline()
+                line=str(datetime.datetime.now())+str(",")+line.decode('utf-8')
+                line=line.split(',')
                 print(line)
-                f.write(str(count))
-                f.write(",")
-                f.write(str(line))
+		#f.write(str(count)+","+str(line)+str("\r\n"))
+                #f.write(str(count))
+                #f.write(",")
+                f.write(str(line)+str('\r\n'))
                 #print now
                 time.sleep(delay)
-                count += delay
+                #count += delay
         f.close()
 ser.close()
 
