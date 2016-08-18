@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#test/data_get.py
+#test/data_get_3.py
 
 import serial
 import sys
@@ -12,6 +12,7 @@ ser.write(b'<RM,>??\r\n') #send command (CR+LF)
 line = ser.readline()
 line = str(datetime.datetime.now()) + str(",") + line.decode('utf-8')
 line = line.split(',')
-print(line[0])
-print(line[1])
-print(line[4])
+#print(line[0])
+#print(line[1])
+#print(line[4])
+print(line)
