@@ -25,12 +25,12 @@ while True:
                 ser.write(b'<RM,>??\r\n') #send command (CR+LF)
                 line=ser.readline()
                 line=str(datetime.datetime.now())+str(",")+line.decode('utf-8')
-                line=line.split(',')
+                #line=line.split(',')
                 print(line)
 		#f.write(str(count)+","+str(line)+str("\r\n"))
                 #f.write(str(count))
                 #f.write(",")
-                f.write(str(line)+str('\r\n'))
+                f.write(str(line)+str("\n"))
                 #print now
                 time.sleep(delay)
                 #count += delay
