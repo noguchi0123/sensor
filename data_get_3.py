@@ -16,3 +16,5 @@ line = line.split(',')
 #print(line[1])
 #print(line[4])
 print(line)
+
+
