@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#test/data_get_3.py
+#test/get_temp.py
 
 import serial
 import sys
@@ -14,8 +14,15 @@ line = str(datetime.datetime.now()) + str(",") + line.decode('utf-8')
 line = line.split(',')
 #print(line[0])
 #print(line[1])
+#print(line[2])
+#print(line[3])
 #print(line[4])
-print(line)
+#print(line[5])
+temp = line[5]
 
-if __name__ == '__main__':
-    main()
+from mymodule import air_parameter
+print(mymodule.air_parameter(temp))
+#print(line)
+
+#if __name__ == '__main__':
+ #   main()
