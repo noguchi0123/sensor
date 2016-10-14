@@ -1,4 +1,4 @@
-temperature,heat_conductivity[W/m*k],density[kg/m^3],specific_heat[J/kg*K],kinematic_viscosity[m^2/sec]
+temperature,heat_conductivity,density,specific_heat,kinematic_viscosity
 10,0.02486,1.23,1007,0.00001442
 30,0.02637,1.149,1007,0.00001635
 50,0.02782,1.077,1008,0.00001838
