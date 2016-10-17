@@ -30,7 +30,7 @@ def main():
     print('specific_heat:')
     sh = get_air_parameter(temp,'sh')
     print(sh)
-    print('dencity:')
+    print('density:')
     d = get_air_parameter(temp,'d')
     print(d)
     hc = get_air_parameter(temp,'hc')
