@@ -26,16 +26,28 @@ def get_air_parameter(temp,para=None):
     df_para = pd.read_csv('../2_data/air_parameter.csv')
     if temp<20:
         temperature=10
-        if para is None:
-            return df_para[df_para.temperature==temperature]
-        elif para=='hc':
-            return df_para.heat_conductivity[df_para.temperature==temperature].values[0]
-        elif para=='d':
-            return df_para.density[df_para.temperature==temperature].values[0]
-        elif para=='sh':
-            return df_para.specific_heat[df_para.temperature==temperature].values[0]
-        else:
-            return ('Input MUST be hc/d/sh.')
+    elif temp<40:
+        temperature=30
+    elif temp<60:
+        temperature=50
+    elif temp<80:
+        temperature=70
+    else:
+        temperature=90
+
+    print(temperature)
+
+    if para is None:
+        return df_para[df_para.temperature==temperature]
+    elif para=='hc':
+        return df_para.heat_conductivity[df_para.temperature==temperature].values[0]
+    elif para=='d':
+        return df_para.density[df_para.temperature==temperature].values[0]
+    elif para=='sh':
+        return df_para.specific_heat[df_para.temperature==temperature].values[0]
+    else:
+        return ('Input MUST be hc/d/sh.')
+    """
     elif temp<40:
         temperature=30
         if para is None:
@@ -84,3 +96,4 @@ def get_air_parameter(temp,para=None):
             return df_para.specific_heat[df_para.temperature==temperature].values[0]
         else:
             return ('Input MUST be hc/d/sh.')
+    """
