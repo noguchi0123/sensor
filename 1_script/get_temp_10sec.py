@@ -25,6 +25,10 @@ def main():
             print('temperature:'+line[5])
             temp = float(line[5])
 
+            if velocity > 0.040:
+                print("I'm soooooo happy")
+#                LED(11)
+
             from mymodule import get_air_parameter, volumetric_flow_rate
             print(get_air_parameter(temp))
             #print('specific_heat:')
@@ -52,9 +56,6 @@ def main():
             print("----------------------------------------error-----------------------------------------")
             print("Index ERROR occured")
             print("----------------------------------------error-----------------------------------------")
-        if velocity > 0.035:
-            print("so speeeedy")
-            LED(11)
 
 if __name__ == '__main__':
     main()

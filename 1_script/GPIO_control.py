@@ -19,11 +19,7 @@ def LED(pin):
         # time.sleep(2)
 
 
-"""
-
-gpio_out = 18
-"""
-def servo(pin):
+def servo(pin, deg):
 
     signal.signal(signal.SIGINT, exit_handler)
     GPIO.setmode(GPIO.BCM)
@@ -35,12 +31,14 @@ def servo(pin):
 
 
     dc = 0.0
-    while True:
-      for dc in range(2, 12, 1):
+#    while True:
+    for dc in range(2, deg, 1):
         servo.ChangeDutyCycle(dc)
-        print("dc = %d" % dc)
+#        print("dc = %d" % dc)
         time.sleep(0.5)
+        """
       for dc in range(12, 2, -1):
         servo.ChangeDutyCycle(dc)
         print("dc = %d" % dc)
         time.sleep(0.5)
+        """
