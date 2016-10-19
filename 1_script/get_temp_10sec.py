@@ -7,6 +7,7 @@ def main():
     import sys
     import time
     import datetime
+    from GPIO_control import LED, exit_handler, servo
     argvs = sys.argv
 
     port = '/dev/ttyUSB0'
@@ -42,12 +43,18 @@ def main():
             from mymodule import get_heat_air
             heat = get_heat_air(specific_heat=sh, density=d, volume=volume, temp_target=70, temp_now=temp)
             print('generated heat is ' + str(heat))
-            print("------------------end-----------------------")
+            print("----------------------------------------end-----------------------------------------")
 
             time.sleep(10)
 
+
         except IndexError:
+            print("----------------------------------------error-----------------------------------------")
             print("Index ERROR occured")
+            print("----------------------------------------error-----------------------------------------")
+        if velocity > 0.035:
+            print("so speeeedy")
+            LED(11)
 
 if __name__ == '__main__':
     main()
