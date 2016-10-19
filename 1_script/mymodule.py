@@ -40,7 +40,7 @@ def get_air_parameter(temp, para=None):
     else:
         temperature = 90
 
-    print(temperature)
+#    print(temperature)
 
     if para is None:
         return df_para[df_para.temperature == temperature]
