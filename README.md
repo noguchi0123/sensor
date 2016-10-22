@@ -10,5 +10,5 @@ servo motor
 取得データに基づく制御をおこなっていきます。
 
 ###
-Raspberry Pi 2 model B
+Raspberry Pi 2 model B \n
 anemometer:wind velocity, wind diretion(xy, z), environmetal temperature
