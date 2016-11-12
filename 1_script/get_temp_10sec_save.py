@@ -12,6 +12,7 @@ def main():
 
     port = '/dev/ttyUSB0'
     print('time, velocity, temperature')
+    f = open("./data.csv", "w")
 
     while True:
         try:
@@ -49,6 +50,8 @@ def main():
             #print('generated heat is ' + str(heat))
             #print("----------------------------------------end-----------------------------------------")
             print(line[0] + ',' + line[2] + ',' + line[5] )
+            f.write(line[0] + ',' + line[2] + ',' + line[5] + "\n")
+
 
             time.sleep(10)
 
