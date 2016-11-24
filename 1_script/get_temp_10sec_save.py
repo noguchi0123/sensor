@@ -12,7 +12,7 @@ def main():
 
     port = '/dev/ttyUSB0'
     print('time, velocity, temperature')
-    f = open("./data.csv", "w")
+    f = open("./data0.csv", "w")
 
     while True:
         try:

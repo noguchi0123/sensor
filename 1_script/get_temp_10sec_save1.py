@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -- coding: utf-8 -*-
 # test/get_temp_10sec.py
 
 
@@ -10,7 +10,9 @@ def main():
     from GPIO_control import LED, exit_handler, servo
     argvs = sys.argv
 
-    port = '/dev/ttyUSB0'
+    port = '/dev/ttyUSB1'
+    print('time, velocity, temperature')
+    f = open("./data1.csv", "w")
 
     while True:
         try:
@@ -19,18 +21,17 @@ def main():
             line = ser.readline()
             line = str(datetime.datetime.now()) + str(",") + line.decode('utf-8')
             line = line.split(',')
-            print(line[0])
-            print('velocity:'+line[2])
+            #print(line[0])
+            #print('velocity:'+line[2])
             velocity = float(line[2])
-            print('temperature:'+line[5])
+            #print('temperature:'+line[5])
             temp = float(line[5])
 
-            if temp > 30.0:
-                print("It's hoooot here")
-                LED(11)
-
+            #if velocity > 0.040:
+            #    print("I'm soooooo happy")
+#                LED(11)
             from mymodule import get_air_parameter, volumetric_flow_rate
-            print(get_air_parameter(temp))
+            #print(get_air_parameter(temp))
             #print('specific_heat:')
             sh = get_air_parameter(temp, 'sh')
             #print(sh)
@@ -42,20 +43,24 @@ def main():
 
             # print(volumetric_flow_rate(v_wind=velocity,hole_area=0.001125))
             volume = volumetric_flow_rate(v_wind=velocity, hole_area=0.001125)*1
-            print('volume is ' + str(volume))
+            #print('volume is ' + str(volume))
 
             from mymodule import get_heat_air
             heat = get_heat_air(specific_heat=sh, density=d, volume=volume, temp_target=70, temp_now=temp)
-            print('generated heat is ' + str(heat))
-            print("----------------------------------------end-----------------------------------------")
+            #print('generated heat is ' + str(heat))
+            #print("----------------------------------------end-----------------------------------------")
+            print(line[0] + ',' + line[2] + ',' + line[5] )
+            f.write(line[0] + ',' + line[2] + ',' + line[5] + "\n")
+
 
             time.sleep(10)
 
 
         except IndexError:
-            print("----------------------------------------error-----------------------------------------")
-            print("Index ERROR occured")
-            print("----------------------------------------error-----------------------------------------")
+            pass
+            #print("----------------------------------------error-----------------------------------------")
+            #print("Index ERROR occured")
+            #print("----------------------------------------error-----------------------------------------")
 
 if __name__ == '__main__':
     main()

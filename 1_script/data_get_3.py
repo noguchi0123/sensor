@@ -17,5 +17,5 @@ line = line.split(',')
 #print(line[4])
 print(line)
 
-if __name__ == '__main__':
-    main()
+#if __name__ == '__main__':
+#    main()
