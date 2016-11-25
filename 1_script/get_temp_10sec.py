@@ -8,6 +8,10 @@ def main():
     import time
     import datetime
     from GPIO_control import LED, exit_handler, servo
+
+    import signal
+    import RPi.GPIO as GPIO
+
     argvs = sys.argv
 
     port = '/dev/ttyUSB0'
@@ -25,9 +29,11 @@ def main():
             print('temperature:'+line[5])
             temp = float(line[5])
 
-            if temp > 30.0:
-                print("It's hoooot here")
-                LED(11)
+#            if temp > 30.0:
+#                print("It's hoooot here")
+#                send()
+#                LED(11)
+#                pass
 
             from mymodule import get_air_parameter, volumetric_flow_rate
             print(get_air_parameter(temp))
@@ -49,6 +55,12 @@ def main():
             print('generated heat is ' + str(heat))
             print("----------------------------------------end-----------------------------------------")
 
+            if temp > 30.0:
+                print("It's hoooot here")
+                LED(11, True)
+            else:
+                print("Oh.. cool")
+                LED(11, False)
             time.sleep(10)
 
 
@@ -56,6 +68,10 @@ def main():
             print("----------------------------------------error-----------------------------------------")
             print("Index ERROR occured")
             print("----------------------------------------error-----------------------------------------")
+
+def send():
+    from GPIO_control import LED, exit_handler, servo
+    LED(11)
 
 if __name__ == '__main__':
     main()

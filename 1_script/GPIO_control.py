@@ -8,12 +8,12 @@ def exit_handler(signal, fname):
 	GPIO.cleanup()
 	sys.exit(0)
 
-def LED(pin):
+def LED(pin, TF):
     signal.signal(signal.SIGINT, exit_handler)
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(pin, GPIO.OUT)
-    while True:
-        GPIO.output(pin, True)
+#    while True:
+    GPIO.output(pin, TF)
         # time.sleep(2)
         # GPIO.output(pin, False)
         # time.sleep(2)
