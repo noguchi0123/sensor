@@ -8,6 +8,8 @@ import datetime
 import threading
 from GPIO_control import LED, exit_handler, servo
 
+import wiringpi #to control servo motors through GPIO
+
 class TestThread(threading.Thread):
     def __init__(self, port_num, filename):
         super(TestThread, self).__init__()
@@ -43,12 +45,28 @@ def main():
     port1 = '/dev/ttyUSB1'
     port2 = '/dev/ttyUSB2'
     ##
-    th_cl1 = TestThread(port1, './original_data/data1.csv')
+    th_cl1 = TestThread(port1, './original_data/data1208.csv')
+    th_cl1 = TestThread(port1, './original_data/data1208.csv')
 
     #th_cl1.start()
     #th_cl2.start()
 
-    f = open('./original_data/data0.csv', 'w')
+    f = open('./original_data/data1209.csv', 'w')
+    ##
+    servo_pin = 18
+
+    param = sys.argv
+    set_degree = int(param[1])
+    print(set_degree)
+
+    wiringpi.wiringPiSetupGpio()
+
+    wiringpi.pinMode(servo_pin, 2)
+
+    wiringpi.pwmSetMode(0)
+    wiringpi.pwmSetRange(1024)
+    wiringpi.pwmSetClock(375)
+
 
     while True:
         try:
@@ -66,11 +84,15 @@ def main():
             f.write(line[0] + ',' + line[2] + ','
                     + line[3] + ',' + line[4] + ',' + line[5] + "\n")
 
-            if temp >= 50.0:
-                print('too hot')
+            if temp >= 35.0:
+#                print('too hot')
+                wiringpi.pwmWrite(servo_pin, set_degree + 5)
 #                LED(11, True)
             else:
-                print('oh.. cool')
+#                print('oh.. cool')
+#                move_deg = int (81+41/90*set_degree)
+
+                wiringpi.pwmWrite(servo_pin, set_degree)
 #                LED(11, False)
 
             time.sleep(5)
