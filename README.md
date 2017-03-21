@@ -1,7 +1,5 @@
 # sensor
 ##はじめに
-Arduino
-RaspberryPi2
-3D風速センサ
-
+風速センサからデータを取得するプログラム
+##使い方
 
